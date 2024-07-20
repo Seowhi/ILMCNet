@@ -1,0 +1,133 @@
+[2024-06-16 16:40:48]: pssp_3 data_loader.py[line:31] INFO  train path is data/pssp_3_data/Netsurfp2.json
+[2024-06-16 16:40:48]: pssp_3 data_loader.py[line:39] INFO    Num train steps = 2698
+[2024-06-16 16:41:01]: pssp_3 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-16 16:41:01]: pssp_3 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-16 16:41:02]: pssp_3 data_loader.py[line:31] INFO  dev path is data/pssp_3_data/ts115.json
+[2024-06-16 16:41:03]: pssp_3 data_loader.py[line:52] INFO    Num dev features = 115
+[2024-06-16 16:41:03]: pssp_3 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-16 20:58:22]: pssp_3 data_loader.py[line:31] INFO  train path is data/pssp_3_data/Netsurfp2.json
+[2024-06-16 20:58:22]: pssp_3 data_loader.py[line:39] INFO    Num train steps = 53960
+[2024-06-16 20:58:34]: pssp_3 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-16 20:58:34]: pssp_3 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-16 20:58:36]: pssp_3 data_loader.py[line:31] INFO  dev path is data/pssp_3_data/cb513.json
+[2024-06-16 20:58:37]: pssp_3 data_loader.py[line:52] INFO    Num dev features = 513
+[2024-06-16 20:58:37]: pssp_3 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-17 10:58:02]: pssp_3 data_loader.py[line:31] INFO  train path is data/pssp_3_data/Netsurfp2.json
+[2024-06-17 10:58:02]: pssp_3 data_loader.py[line:39] INFO    Num train steps = 53960
+[2024-06-17 10:58:14]: pssp_3 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-17 10:58:14]: pssp_3 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-17 10:58:16]: pssp_3 data_loader.py[line:31] INFO  dev path is data/pssp_3_data/cb513.json
+[2024-06-17 10:58:16]: pssp_3 data_loader.py[line:52] INFO    Num dev features = 513
+[2024-06-17 10:58:16]: pssp_3 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-17 11:00:01]: pssp_3 data_loader.py[line:31] INFO  train path is data/pssp_3_data/Netsurfp2.json
+[2024-06-17 11:00:01]: pssp_3 data_loader.py[line:39] INFO    Num train steps = 53960
+[2024-06-17 11:00:13]: pssp_3 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-17 11:00:13]: pssp_3 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-17 11:00:15]: pssp_3 data_loader.py[line:31] INFO  dev path is data/pssp_3_data/cb513.json
+[2024-06-17 11:00:15]: pssp_3 data_loader.py[line:52] INFO    Num dev features = 513
+[2024-06-17 11:00:15]: pssp_3 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-17 11:01:03]: pssp_3 data_loader.py[line:31] INFO  train path is data/pssp_3_data/Netsurfp2.json
+[2024-06-17 11:01:03]: pssp_3 data_loader.py[line:39] INFO    Num train steps = 2698
+[2024-06-17 11:01:15]: pssp_3 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-17 11:01:15]: pssp_3 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-17 11:01:17]: pssp_3 data_loader.py[line:31] INFO  dev path is data/pssp_3_data/cb513.json
+[2024-06-17 11:01:18]: pssp_3 data_loader.py[line:52] INFO    Num dev features = 513
+[2024-06-17 11:01:18]: pssp_3 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-17 11:02:10]: pssp_3 data_loader.py[line:31] INFO  train path is data/pssp_3_data/Netsurfp2.json
+[2024-06-17 11:02:10]: pssp_3 data_loader.py[line:39] INFO    Num train steps = 2698
+[2024-06-17 11:02:22]: pssp_3 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-17 11:02:22]: pssp_3 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-17 11:02:23]: pssp_3 data_loader.py[line:31] INFO  dev path is data/pssp_3_data/cb513.json
+[2024-06-17 11:02:24]: pssp_3 data_loader.py[line:52] INFO    Num dev features = 513
+[2024-06-17 11:02:24]: pssp_3 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-17 11:05:54]: pssp_3 data_loader.py[line:31] INFO  train path is data/pssp_3_data/Netsurfp2.json
+[2024-06-17 11:05:54]: pssp_3 data_loader.py[line:39] INFO    Num train steps = 53960
+[2024-06-17 11:06:06]: pssp_3 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-17 11:06:06]: pssp_3 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-17 11:06:08]: pssp_3 data_loader.py[line:31] INFO  dev path is data/pssp_3_data/cb513.json
+[2024-06-17 11:06:09]: pssp_3 data_loader.py[line:52] INFO    Num dev features = 513
+[2024-06-17 11:06:09]: pssp_3 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-17 11:07:05]: pssp_8 data_loader.py[line:31] INFO  train path is data/pssp_8_data/Netsurfp2.json
+[2024-06-17 11:07:05]: pssp_8 data_loader.py[line:39] INFO    Num train steps = 53960
+[2024-06-17 11:07:17]: pssp_8 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-17 11:07:17]: pssp_8 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-17 11:07:19]: pssp_8 data_loader.py[line:31] INFO  dev path is data/pssp_8_data/cb513.json
+[2024-06-17 11:07:19]: pssp_8 data_loader.py[line:52] INFO    Num dev features = 513
+[2024-06-17 11:07:19]: pssp_8 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-17 14:48:23]: pssp_8 data_loader.py[line:31] INFO  train path is data/pssp_8_data/Netsurfp2.json
+[2024-06-17 14:48:23]: pssp_8 data_loader.py[line:39] INFO    Num train steps = 53960
+[2024-06-17 14:48:35]: pssp_8 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-17 14:48:35]: pssp_8 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-17 14:48:37]: pssp_8 data_loader.py[line:31] INFO  dev path is data/pssp_8_data/cb513.json
+[2024-06-17 14:48:38]: pssp_8 data_loader.py[line:52] INFO    Num dev features = 513
+[2024-06-17 14:48:38]: pssp_8 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-17 14:48:52]: pssp_3 data_loader.py[line:31] INFO  train path is data/pssp_3_data/Netsurfp2.json
+[2024-06-17 14:48:52]: pssp_3 data_loader.py[line:39] INFO    Num train steps = 53960
+[2024-06-17 14:49:04]: pssp_3 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-17 14:49:04]: pssp_3 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-17 14:49:06]: pssp_3 data_loader.py[line:31] INFO  dev path is data/pssp_3_data/cb513.json
+[2024-06-17 14:49:07]: pssp_3 data_loader.py[line:52] INFO    Num dev features = 513
+[2024-06-17 14:49:07]: pssp_3 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-18 11:08:54]: pssp_3 data_loader.py[line:31] INFO  train path is data/pssp_3_data/Netsurfp2.json
+[2024-06-18 11:08:54]: pssp_3 data_loader.py[line:39] INFO    Num train steps = 2698
+[2024-06-18 11:09:05]: pssp_3 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-18 11:09:05]: pssp_3 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-18 11:09:07]: pssp_3 data_loader.py[line:31] INFO  dev path is data/pssp_3_data/casp12.json
+[2024-06-18 11:09:07]: pssp_3 data_loader.py[line:52] INFO    Num dev features = 20
+[2024-06-18 11:09:07]: pssp_3 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-18 11:09:55]: pssp_3 data_loader.py[line:31] INFO  train path is data/pssp_3_data/Netsurfp2.json
+[2024-06-18 11:09:55]: pssp_3 data_loader.py[line:39] INFO    Num train steps = 2698
+[2024-06-18 11:10:07]: pssp_3 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-18 11:10:07]: pssp_3 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-18 11:10:09]: pssp_3 data_loader.py[line:31] INFO  dev path is data/pssp_3_data/ts115.json
+[2024-06-18 11:10:09]: pssp_3 data_loader.py[line:52] INFO    Num dev features = 115
+[2024-06-18 11:10:09]: pssp_3 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-18 11:10:33]: pssp_3 data_loader.py[line:31] INFO  train path is data/pssp_3_data/Netsurfp2.json
+[2024-06-18 11:10:33]: pssp_3 data_loader.py[line:39] INFO    Num train steps = 2698
+[2024-06-18 11:10:45]: pssp_3 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-18 11:10:45]: pssp_3 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-18 11:10:47]: pssp_3 data_loader.py[line:31] INFO  dev path is data/pssp_3_data/new364.json
+[2024-06-18 11:10:47]: pssp_3 data_loader.py[line:52] INFO    Num dev features = 364
+[2024-06-18 11:10:47]: pssp_3 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-18 11:11:59]: pssp_3 data_loader.py[line:31] INFO  train path is data/pssp_3_data/Netsurfp2.json
+[2024-06-18 11:11:59]: pssp_3 data_loader.py[line:39] INFO    Num train steps = 2698
+[2024-06-18 11:12:11]: pssp_3 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-18 11:12:11]: pssp_3 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-18 11:12:13]: pssp_3 data_loader.py[line:31] INFO  dev path is data/pssp_3_data/new364.json
+[2024-06-18 11:12:13]: pssp_3 data_loader.py[line:52] INFO    Num dev features = 364
+[2024-06-18 11:12:13]: pssp_3 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-18 11:13:38]: pssp_3 data_loader.py[line:31] INFO  train path is data/pssp_3_data/Netsurfp2.json
+[2024-06-18 11:13:38]: pssp_3 data_loader.py[line:39] INFO    Num train steps = 2698
+[2024-06-18 11:13:50]: pssp_3 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-18 11:13:50]: pssp_3 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-18 11:13:52]: pssp_3 data_loader.py[line:31] INFO  dev path is data/pssp_3_data/casp12.json
+[2024-06-18 11:13:52]: pssp_3 data_loader.py[line:52] INFO    Num dev features = 20
+[2024-06-18 11:13:52]: pssp_3 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-18 11:14:30]: pssp_3 data_loader.py[line:31] INFO  train path is data/pssp_3_data/Netsurfp2.json
+[2024-06-18 11:14:30]: pssp_3 data_loader.py[line:39] INFO    Num train steps = 2698
+[2024-06-18 11:14:42]: pssp_3 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-18 11:14:42]: pssp_3 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-18 11:14:44]: pssp_3 data_loader.py[line:31] INFO  dev path is data/pssp_3_data/ts115.json
+[2024-06-18 11:14:44]: pssp_3 data_loader.py[line:52] INFO    Num dev features = 115
+[2024-06-18 11:14:44]: pssp_3 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-18 11:15:34]: pssp_8 data_loader.py[line:31] INFO  train path is data/pssp_8_data/Netsurfp2.json
+[2024-06-18 11:15:34]: pssp_8 data_loader.py[line:39] INFO    Num train steps = 2698
+[2024-06-18 11:15:46]: pssp_8 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-18 11:15:46]: pssp_8 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-18 11:15:48]: pssp_8 data_loader.py[line:31] INFO  dev path is data/pssp_8_data/ts115.json
+[2024-06-18 11:15:48]: pssp_8 data_loader.py[line:52] INFO    Num dev features = 115
+[2024-06-18 11:15:48]: pssp_8 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-18 11:16:17]: pssp_8 data_loader.py[line:31] INFO  train path is data/pssp_8_data/Netsurfp2.json
+[2024-06-18 11:16:18]: pssp_8 data_loader.py[line:39] INFO    Num train steps = 2698
+[2024-06-18 11:16:30]: pssp_8 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-18 11:16:30]: pssp_8 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-18 11:16:31]: pssp_8 data_loader.py[line:31] INFO  dev path is data/pssp_8_data/casp12.json
+[2024-06-18 11:16:31]: pssp_8 data_loader.py[line:52] INFO    Num dev features = 20
+[2024-06-18 11:16:31]: pssp_8 data_loader.py[line:53] INFO   dev Batch size = 1
+[2024-06-18 11:16:53]: pssp_8 data_loader.py[line:31] INFO  train path is data/pssp_8_data/Netsurfp2.json
+[2024-06-18 11:16:53]: pssp_8 data_loader.py[line:39] INFO    Num train steps = 2698
+[2024-06-18 11:17:06]: pssp_8 data_loader.py[line:52] INFO    Num train features = 10792
+[2024-06-18 11:17:06]: pssp_8 data_loader.py[line:53] INFO   train Batch size = 4
+[2024-06-18 11:17:07]: pssp_8 data_loader.py[line:31] INFO  dev path is data/pssp_8_data/new364.json
+[2024-06-18 11:17:08]: pssp_8 data_loader.py[line:52] INFO    Num dev features = 364
+[2024-06-18 11:17:08]: pssp_8 data_loader.py[line:53] INFO   dev Batch size = 1

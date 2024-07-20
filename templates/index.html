@@ -1,0 +1,573 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>ILMCNet</title>#}
+{#    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">#}
+{#    <style>#}
+{#        body {#}
+{#            font-family: Arial, sans-serif;#}
+{#            background-color: #f0f0f0;#}
+{#            margin: 0;#}
+{#            padding: 0;#}
+{#        }#}
+{#        .container {#}
+{#            max-width: 800px;#}
+{#            margin: 20px auto;#}
+{#            background-color: #ffffff;#}
+{#            padding: 20px;#}
+{#            border-radius: 8px;#}
+{#            box-shadow: 0 0 10px rgba(0,0,0,0.1);#}
+{#        }#}
+{#        .header {#}
+{#            display: flex;#}
+{#            justify-content: space-between;#}
+{#            align-items: center;#}
+{#            margin-bottom: 20px;#}
+{#        }#}
+{#        .header h1 {#}
+{#            margin: 0;#}
+{#            font-size: 24px;#}
+{#            color: #333333;#}
+{#        }#}
+{#        .btn {#}
+{#            padding: 10px 20px;#}
+{#            border: none;#}
+{#            background-color: #3498db;#}
+{#            color: #ffffff;#}
+{#            cursor: pointer;#}
+{#            border-radius: 4px;#}
+{#        }#}
+{#        .btn:disabled {#}
+{#            background-color: #cccccc;#}
+{#            cursor: not-allowed;#}
+{#        }#}
+{#        .content {#}
+{#            margin-bottom: 30px;#}
+{#        }#}
+{#        .form-group {#}
+{#            margin-bottom: 15px;#}
+{#        }#}
+{#        .form-group label {#}
+{#            display: block;#}
+{#            margin-bottom: 5px;#}
+{#        }#}
+{#        .form-group .rich-text-editor {#}
+{#            width: 100%; /* Full width */#}
+{#            min-height: 100px; /* Fixed height for rich text editor */#}
+{#            max-width: calc(100% - 22px); /* Adjusted for padding and borders */#}
+{#            padding: 10px;#}
+{#            font-size: 14px;#}
+{#            border: 1px solid #cccccc;#}
+{#            border-radius: 4px;#}
+{#            resize: vertical; /* Allow vertical resizing only */#}
+{#        }#}
+{#        .form-group .btn-small {#}
+{#            margin-left: 10px;#}
+{#            padding: 8px 12px;#}
+{#        }#}
+{#        .result {#}
+{#            display: none;#}
+{#            background-color: rgba(0, 0, 0, 0.8);#}
+{#            color: #ffffff;#}
+{#            position: fixed;#}
+{#            top: 50%;#}
+{#            left: 50%;#}
+{#            transform: translate(-50%, -50%);#}
+{#            padding: 20px;#}
+{#            border-radius: 8px;#}
+{#            z-index: 999;#}
+{#        }#}
+{#        .footer {#}
+{#            margin-top: 30px;#}
+{#            text-align: center;#}
+{#        }#}
+{#        .img {#}
+{#            max-width: 100%; /* 图片最大宽度为其父元素宽度的100% */#}
+{#            max-height: 300px; /* 图片最大高度为300px，根据需要调整 */#}
+{#            border-radius: 8px;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{##}
+{##}
+{#<body>#}
+{#    <div id="app" class="container">#}
+{#        <div class="header">#}
+{#            <h1>ILMCNet</h1>#}
+{#            <template>#}
+{#              <el-button type="text" @click="open">联系我们</el-button>#}
+{#            </template>#}
+{#        </div>#}
+{#        <form name="form" method="post">#}
+{#            <div class="content">#}
+{#                <div>#}
+{#                    <h2>Prediction of Protein Secondary Structure</h2>#}
+{#                </div>#}
+{#                <div class="form-group">#}
+{#                    <textarea#}
+{#                            placeholder="Please enter the amino acid sequence"#}
+{#                            id="richTextEditor" class="rich-text-editor" v-model="sequence" name="sequence"></textarea>#}
+{#                </div>#}
+{#                <div class="form-group">#}
+{#                    <el-button type="primary" icon="el-icon-delete" @click="clearInput"></el-button>#}
+{#    <!--                <button class="btn btn-small" @click="clearInput">清空</button>-->#}
+{#    <!--                <button class="btn btn-small" @click="fillExample">示例</button>-->#}
+{#                    <el-button type="primary" @click="fillExample">示例</el-button>#}
+{#                </div>#}
+{#                <div class="form-group">#}
+{#    <!--                <label for="uploadFile">上传fasta文件</label>-->#}
+{#    <!--                <input type="file" id="uploadFile" @change="handleFileUpload">-->#}
+{#                    <el-upload#}
+{#                        class="upload-demo"#}
+{#                        action=""#}
+{#                        :limit="1"#}
+{#                        :on-change="handleFileUpload"#}
+{#                        :file-list="fileList"#}
+{#                        >#}
+{#                        <el-button size="small" type="primary">点击上传<i class="el-icon-upload el-icon--right"></i></el-button>#}
+{#                        <div slot="tip" class="el-upload__tip">只能上传fasta文件</div>#}
+{#                    </el-upload>#}
+{#                </div>#}
+{#                <div class="form-group">#}
+{#                    <el-dropdown @command="handleDropdownCommand">#}
+{#                        <el-button type="primary">#}
+{#                           选择任务<i class="el-icon-arrow-down el-icon--right"></i>#}
+{#                        </el-button>#}
+{#                        <el-dropdown-menu slot="dropdown">#}
+{#                            <el-dropdown-item command="PSSP_3">PSSP_3</el-dropdown-item>#}
+{#                            <el-dropdown-item command="PSSP_8">PSSP_8</el-dropdown-item>#}
+{#                        </el-dropdown-menu>#}
+{#                    </el-dropdown>#}
+{#                    <el-button slot="append" type="primary" @click="submitForm" :disabled="sequence.length === 0 || !isDropdownSelected">提交</el-button>#}
+{#                </div>#}
+{#                <div v-if="selectedOption" class="form-group">#}
+{#                    <p class="el-upload__tip">已选择选项: {{ selectedOption }}</p>#}
+{#                </div>#}
+{#                <div class="form-group">#}
+{#                    <div v-if="showResult" class="result">#}
+{#                        <p>Output：{{ resultMessage }}</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </form>#}
+{#        <div>#}
+{#            <h3>ILMCNet</h3>#}
+{#            <!-- Placeholder for Image (Replace with your actual image) -->#}
+{#            <p>xxxxxxxxx</p>#}
+{#        </div>#}
+{#        <div class="footer">#}
+{#            <img src="img/picture.jpg" alt="Placeholder Image" class="img">#}
+{#        </div>#}
+{##}
+{#    </div>#}
+{##}
+{##}
+{#    <!-- import Vue before Element -->#}
+{#     <script src="https://unpkg.com/vue@2/dist/vue.js"></script>#}
+{#     <!-- import JavaScript -->#}
+{#     <script src="https://unpkg.com/element-ui/lib/index.js"></script>#}
+{##}
+{#    <script>#}
+{##}
+{#        new Vue({#}
+{#            el: '#app',#}
+{#            data: {#}
+{#                sequence: '',#}
+{#                selectedOption: '',#}
+{#                isLoading: false,#}
+{#                showResult: false,#}
+{#                isDropdownSelected: false,#}
+{#                fileList: [],#}
+{#                resultMessage: ''#}
+{#            },#}
+{#            methods: {#}
+{#                open() {#}
+{#                    this.$msgbox({#}
+{#                        title: '邮箱',#}
+{#                        message: '2606633769@qq.com',#}
+{#                        showCancelButton: true,#}
+{#                        confirmButtonText: '复制',#}
+{#                        cancelButtonText: '关闭',#}
+{#                        beforeClose: (action, instance, done) => {#}
+{#                            if (action === 'confirm') {#}
+{#                                this.copyToClipboard(message);#}
+{#                                this.$message({#}
+{#                                    type: 'info',#}
+{#                                    message: `内容已复制`#}
+{#                                });#}
+{#                            }#}
+{#                            done();#}
+{#                        }#}
+{#                    });#}
+{#                },#}
+{#                // open() {#}
+{#                //     const h = this.$createElement;#}
+{#                //     this.$msgbox({#}
+{#                //       title: '邮箱',#}
+{#                //       message: h('p', null, [#}
+{#                //         h('span', null, '2606633769@qq.com ')#}
+{#                //       ]),#}
+{#                //       showCancelButton: true,#}
+{#                //       confirmButtonText: '确定',#}
+{#                //       cancelButtonText: '取消',#}
+{#                //       beforeClose: (action, instance, done) => {#}
+{#                //         if (action === 'confirm') {#}
+{#                //           instance.confirmButtonLoading = true;#}
+{#                //           instance.confirmButtonText = '执行中...';#}
+{#                //           setTimeout(() => {#}
+{#                //             done();#}
+{#                //             setTimeout(() => {#}
+{#                //               instance.confirmButtonLoading = false;#}
+{#                //             }, 300);#}
+{#                //           }, 3000);#}
+{#                //         } else {#}
+{#                //           done();#}
+{#                //         }#}
+{#                //       }#}
+{#                //     }).then(action => {#}
+{#                //       this.$message({#}
+{#                //         type: 'info',#}
+{#                //         message: 'action: ' + action#}
+{#                //       });#}
+{#                //     });#}
+{#                // },#}
+{#                clearInput() {#}
+{#                    this.sequence = '';#}
+{#                },#}
+{#                fillExample() {#}
+{#                    this.sequence = 'GSAGEDVGAPPDHLWVHQEGIYRDEYQRTWVAVVEEETSFLRARVQQIQVPLGDAARPSHLLTSQLPLMWQLYPEERYMDNNSRLWQIQHHLMVRGVQELLLKLLPDD';#}
+{#                },#}
+{#                handleFileUpload(file) {#}
+{#                    // this.fileList = fileList.slice(-1);#}
+{#                    const reader = new FileReader();#}
+{#                    reader.onload = (e) => {#}
+{#                        // 获取文件内容#}
+{#                        const content = e.target.result;#}
+{#                        // 按行分割文件内容#}
+{#                        const lines = content.split('\n');#}
+{#                        // 仅提取第二行内容（索引1）#}
+{#                        if (lines.length > 1) {#}
+{#                            this.sequence = lines[1].trim(); // 去除前后空白字符#}
+{#                        } else {#}
+{#                            this.sequence = ''; // 如果文件只有一行，则清空富文本框#}
+{#                        }#}
+{#                    };#}
+{#                    reader.readAsText(file.raw);#}
+{#                },#}
+{#                // beforeUpload(file) {#}
+{#                //     this.fileList = [];  // 清空文件列表#}
+{#                //     return true;  // 允许上传#}
+{#                // },#}
+{#                handleDropdownCommand(command) {#}
+{#                    this.selectedOption = command;#}
+{#                    this.isDropdownSelected = true;#}
+{#                },#}
+{#                submitForm() {#}
+{#                    // Simulate submission#}
+{#                    this.isLoading = true;#}
+{#                    setTimeout(() => {#}
+{#                        this.resultMessage = '123456789';#}
+{#                        this.showResult = true;#}
+{#                        this.isLoading = false;#}
+{#                    }, 200); // Simulated delay#}
+{#                }#}
+{#            }#}
+{#        });#}
+{#    </script>#}
+{#</body>#}
+{#</html>#}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILMCNet</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        body {
+            font-family: "Times New Roman", sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333333;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            background-color: #3498db;
+            color: #ffffff;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .content {
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group .rich-text-editor {
+            width: 100%;
+            min-height: 100px;
+            max-width: calc(100% - 22px);
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        .form-group .btn-small {
+            margin-left: 10px;
+            padding: 8px 12px;
+        }
+        .result {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 999;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+        }
+        .indent-text {
+            padding-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="container" v-loading="isLoading">
+        <div class="header">
+            <h1>ILMCNet</h1>
+            <template>
+                <el-button type="text" @click="open">Contact Us</el-button>
+            </template>
+        </div>
+        <form @submit.prevent="submitForm">
+            <div class="content">
+                <div>
+                    <h3>Prediction of Protein Secondary Structure</h3>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Please enter the amino acid sequence" id="richTextEditor" class="rich-text-editor" v-model="sequence" name="sequence"></textarea>
+                </div>
+                <div class="form-group">
+                    <el-button type="primary" icon="el-icon-delete" @click="clearInput">Clear</el-button>
+                    <el-button type="primary" @click="fillExample">Example</el-button>
+                </div>
+                <div class="form-group">
+{#                    <el-upload class="upload-demo" action="" :limit="1" :on-change="handleFileUpload" :file-list="fileList">#}
+{#                        <el-button size="small" type="primary">Click to Upload<i class="el-icon-upload el-icon--right"></i></el-button>#}
+{#                        <div slot="tip" class="el-upload__tip">Only FASTA files are allowed.</div>#}
+{#                    </el-upload>#}
+
+                    <el-upload
+                      class="upload-demo"
+                      action=""
+                      :on-preview="handlePreview"
+                      :on-remove="handleRemove"
+                      :before-remove="beforeRemove"
+                      multiple
+                      :limit="1"
+                      :on-exceed="handleExceed"
+                      :on-change="handleFileUpload"
+                      :file-list="fileList">
+                      <el-button size="small" type="primary">Click to Upload<i class="el-icon-upload el-icon--right"></i></el-button>
+                      <div slot="tip" class="el-upload__tip">Only FASTA files are allowed.</div>
+                    </el-upload>
+                </div>
+                <div class="form-group">
+                    <el-select v-model="selectedOption" placeholder="Select Task">
+                        <el-option
+                          v-for="item in options"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value">
+                        </el-option>
+                    </el-select>
+                    <el-button slot="append" type="primary" :disabled="sequence.length === 0 || !selectedOption" @click="submitForm">Submit</el-button>
+                </div>
+                <div class="form-group">
+                    <h4>Output:</h4>
+                </div>
+                <div class="form-group">
+                    <textarea v-if="showResult" id="richTextEditor"
+                              class="rich-text-editor"
+                              v-model="resultMessage"></textarea>
+                    <span>{{ resultMessage }}</span>
+                </div>
+
+            </div>
+        </form>
+        <div>
+            <h3>Presentations</h3>
+            <p>ILMCNet provides a publicly available online tool for protein secondary structure prediction that supports users to upload the amino acid sequence of any protein for prediction. Here are some notes:
+            <p class="indent-text">· ILMCNet only supports two ways of inputting amino acid sequence or uploading fasta file. When uploading files, only one file is allowed to be uploaded for prediction at one time. If you want to predict other files, please delete the uploaded file first, and then re-upload it again.</p>
+            <p class="indent-text">· ILMCNet supports two kinds of prediction tasks: three-state and eight-state protein secondary structure prediction, which can be chosen by users according to their needs.</p>
+            <p class="indent-text">· Different lengths of protein sequences take different prediction times.</p>
+            <p class="indent-text">· Email address is provided in the upper right corner, so you can contact us if you have any questions.</p>
+            <p class="indent-text">· We suggest that users can use the <a href="https://pymol.org/">PyMOL</a> tool to visualize the obtained protein secondary structure, which helps users to understand.</p>
+            <p class="indent-text">· The following figure shows the design concept of ILMCNet.</p>
+        </div>
+        <div class="footer">
+            <img src="{{ url_for('static', filename='img/picture.jpg') }}" alt="Image" class="img">
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                sequence: '',
+                selectedOption: '',
+                isLoading: false,
+                showResult: false,
+                isDropdownSelected: false,
+                fileList: [],
+                resultMessage: '',
+                options: [
+                    { value: 'PSSP_3', label: 'PSSP_3' },
+                    { value: 'PSSP_8', label: 'PSSP_8' }
+                ],
+            },
+            methods: {
+                handleRemove(file, fileList) {
+                    console.log(file, fileList);
+                },
+                handlePreview(file) {
+                    console.log(file);
+                },
+                handleExceed(files, fileList) {
+                    this.$message.warning(`The current limit is 1 file selected.`);
+                },
+                beforeRemove(file, fileList) {
+                    {#return this.$confirm(`Are you sure you want to remove ${ file.name }？`);#}
+                    return this.$confirm(`Are you sure you want to remove ${file.name}?`, 'Confirmation', {
+                        confirmButtonText: 'Yes',
+                        cancelButtonText: 'No',
+                        type: 'warning'
+                    });
+                },
+                open() {
+                    this.$msgbox({
+                        title: 'Email',
+                        message: '2606633769@qq.com',
+                        showCancelButton: true,
+                        confirmButtonText: 'Copy',
+                        cancelButtonText: 'Close',
+                        beforeClose: (action, instance, done) => {
+                            if (action === 'confirm') {
+                                this.copyToClipboard('2606633769@qq.com');
+                                this.$message({
+                                    type: 'info',
+                                    message: '内容已复制'
+                                });
+                            }
+                            done();
+                        }
+                    });
+                },
+                clearInput() {
+                    this.sequence = '';
+                },
+                fillExample() {
+                    this.sequence = 'GSAGEDVGAPPDHLWVHQEGIYRDEYQRTWVAVVEEETSFLRARVQQIQVPLGDAARPSHLLTSQLPLMWQLYPEERYMDNNSRLWQIQHHLMVRGVQELLLKLLPDD';
+                },
+                handleFileUpload(file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const content = e.target.result;
+                        const lines = content.split('\n');
+                        if (lines.length > 1) {
+                            this.sequence = lines[1].trim();
+                        } else {
+                            this.sequence = '';
+                        }
+                    };
+                    reader.readAsText(file.raw);
+                    this.fileList = fileList;
+                },
+
+                handleDropdownCommand(command) {
+                    this.selectedOption = command;
+                    this.isDropdownSelected = true;
+                },
+                submitForm() {
+                    console.log('Submitting form...');
+                    this.isLoading = true;
+                    const formData = new FormData();
+                    formData.append('sequence', this.sequence);
+                    formData.append('task', this.selectedOption);
+
+                    fetch('http://127.0.0.1:5000/main', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then(response => {
+                        console.log('Response:', response);
+                        return response.json();  // 处理 JSON 响应
+                    })
+                    .then(data => {
+                        console.log('Response data:', data);
+                        this.resultMessage = data.resultMessage;  // 更新 resultMessage
+                        console.log('ResultMessage before assignment:', this.resultMessage);
+                        this.$nextTick(() => {
+                            console.log('DOM updated with new resultMessage:', this.resultMessage);
+                        });
+                        this.isLoading = false;
+                        this.showResult = true;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        this.isLoading = false;
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
