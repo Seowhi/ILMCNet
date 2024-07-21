@@ -29,7 +29,7 @@ TRAIN_DATASET = ['cullpdb', 'Netsurfp2']
 train_dataset = "Netsurfp2"
 TEST_DATASET = ['cb513', 'casp12', 'ts115', 'new364','casp11']
 test_dataset = "casp12"
-model_path = f'output/checkpoint/model_pssp3.bin'
+
 
 fasta_file = f'data/rcsb_pdb_1A1X.fasta'
 
@@ -69,12 +69,14 @@ if task_name == 'pssp_3':
     num_tags = 3
     output_dir = "output/checkpoint/Q3"
     npz_path = f't5/{train_dataset}.npz'
+    model_path = f'output/checkpoint/model_pssp3.bin'
 elif task_name == 'pssp_8':
     labels = ['C', 'B', 'E', 'G', 'I', 'H', 'S', 'T']
     types = ['0', '1', '2','3','4','5','6','7']
     num_tags = 8
     output_dir = "output/checkpoint/Q8"
     npz_path = f't5/{train_dataset}.npz'
+    model_path = f'output/checkpoint/model_pssp8.bin'
 
 pt_size = 1024
 encode_size = 512   #best:512
